@@ -40,6 +40,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
     }
+    namespace = "de.handler.foodtruckz"
 }
 
 dependencies {
