@@ -1,4 +1,4 @@
-package de.handler.foodtruckz.ui.theme
+package de.handler.foodtruckz.app.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

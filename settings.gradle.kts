@@ -3,9 +3,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "Foodtruckz"
 include(":app")
 include(":library:core")
+include(":feature:overview")
