@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Foodtruckz"
 include(":app")
+include(":core")
