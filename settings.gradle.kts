@@ -9,3 +9,4 @@ rootProject.name = "Foodtruckz"
 include(":app")
 include(":library:core")
 include(":feature:overview")
+include(":library:data")

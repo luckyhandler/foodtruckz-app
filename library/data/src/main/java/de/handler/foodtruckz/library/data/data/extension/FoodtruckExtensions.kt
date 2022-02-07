@@ -1,9 +1,9 @@
-package de.handler.foodtruckz.feature.overview.data.extension
+package de.handler.foodtruckz.library.data.data.extension
 
-import de.handler.foodtruckz.feature.overview.data.Foodtruck
-import de.handler.foodtruckz.feature.overview.data.Foodtruckz
-import de.handler.foodtruckz.feature.overview.data.OperatorsItem
-import de.handler.foodtruckz.feature.overview.data.ToursItem
+import de.handler.foodtruckz.library.data.data.Foodtruck
+import de.handler.foodtruckz.library.data.data.Foodtruckz
+import de.handler.foodtruckz.library.data.data.OperatorsItem
+import de.handler.foodtruckz.library.data.data.ToursItem
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*

@@ -1,6 +1,6 @@
-package de.handler.foodtruckz.feature.overview.data
+package de.handler.foodtruckz.library.data.data
 
-import de.handler.foodtruckz.feature.overview.data.Foodtruckz
+import de.handler.foodtruckz.library.data.data.Foodtruckz
 import retrofit2.http.GET
 import retrofit2.http.Query
 

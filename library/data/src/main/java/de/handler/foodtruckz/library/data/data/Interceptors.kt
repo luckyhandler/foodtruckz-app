@@ -1,4 +1,4 @@
-package de.handler.foodtruckz.feature.overview.data
+package de.handler.foodtruckz.library.data.data
 
 import android.util.Base64
 import okhttp3.Interceptor

@@ -28,20 +28,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
-    }
 }
 
 dependencies {
+    implementation("com.squareup.retrofit2:retrofit:${rootProject.extra["retrofit_version"]}")
+    implementation("com.squareup.retrofit2:converter-moshi:${rootProject.extra["retrofit_version"]}")
+    implementation("com.squareup.okhttp3:logging-interceptor:${rootProject.extra["okhttp_version"]}")
 
-    implementation(project(":library:core"))
-    implementation(project(":library:data"))
-
-    testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
-    androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["junit_androidx_version"]}")
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.google.android.material:material:1.5.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

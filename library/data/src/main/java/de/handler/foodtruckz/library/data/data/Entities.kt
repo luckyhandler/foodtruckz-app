@@ -1,4 +1,4 @@
-package de.handler.foodtruckz.feature.overview.data
+package de.handler.foodtruckz.library.data.data
 
 
 data class Foodtruckz(
