@@ -28,14 +28,14 @@ fun FoodtruckOverview(activity: ComponentActivity) {
 
     viewModel.uiState.observe(activity) {
         activity.setContent {
-            Foodtruckz(uiState = it)
+            FoodtruckzContent(uiState = it)
         }
     }
 }
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-private fun Foodtruckz(uiState: UiState) = when (uiState) {
+private fun FoodtruckzContent(uiState: UiState) = when (uiState) {
     is UiState.Success -> Column {
         uiState.foodtruckz.forEach { foodtruck ->
             Row(modifier = Modifier.padding(all = 16.dp)) {
