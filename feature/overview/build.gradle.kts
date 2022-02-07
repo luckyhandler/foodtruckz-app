@@ -40,7 +40,7 @@ dependencies {
 
     implementation(project(":library:core"))
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
+    androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["junit_androidx_version"]}")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 }
