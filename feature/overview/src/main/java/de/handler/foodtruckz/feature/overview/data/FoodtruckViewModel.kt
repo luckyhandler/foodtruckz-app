@@ -72,7 +72,7 @@ class FoodtruckViewModelImpl : FoodtruckViewModel() {
                     0,
                     0,
                     0,
-                    now.zone).plusDays(1)
+                    now.zone).plusDays(7)
             )
             val foodtrucks = foodtrucksForToday.mapToModelList()
 
