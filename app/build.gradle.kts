@@ -45,7 +45,9 @@ android {
 
 dependencies {
     implementation(project(":library:core"))
+    implementation(project(":library:data"))
     implementation(project(":feature:overview"))
+    implementation(project(":feature:details"))
 
     testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
     androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["junit_androidx_version"]}")

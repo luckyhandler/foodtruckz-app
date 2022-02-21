@@ -10,7 +10,7 @@ import de.handler.foodtruckz.library.data.data.Foodtruck
 import kotlinx.coroutines.launch
 
 abstract class FoodtruckViewModel : ViewModel() {
-    abstract val uiState: LiveData<UiState>
+    abstract val overviewUiState: LiveData<OverviewUiState>
 
     abstract fun fetchTruckz()
     abstract fun openDetails(foodtruck: Foodtruck)
@@ -18,21 +18,21 @@ abstract class FoodtruckViewModel : ViewModel() {
 
 class FoodtruckViewModelImpl : FoodtruckViewModel() {
 
-    override val uiState = MutableLiveData<UiState>()
+    override val overviewUiState = MutableLiveData<OverviewUiState>()
 
     private val manager = FoodtrucksManagerImpl()
     private val repo = FoodtrucksRepositoryImpl(manager = manager)
 
     override fun fetchTruckz() {
         viewModelScope.launch {
-            uiState.value = UiState.Loading
+            overviewUiState.value = OverviewUiState.Loading
 
             try {
                 val foodtrucks = repo.getFoodtruckz()
-                uiState.value = UiState.Success(foodtruckz = foodtrucks)
+                overviewUiState.value = OverviewUiState.Success(foodtruckz = foodtrucks)
             } catch (e: Exception) {
                 // if exception occurs emit error and exit execution
-                uiState.value = UiState.Error
+                overviewUiState.value = OverviewUiState.Error
                 return@launch
             }
         }
