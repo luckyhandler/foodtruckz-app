@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.handler.foodtruckz.library.data.FoodtrucksManagerImpl
 import de.handler.foodtruckz.library.data.FoodtrucksRepositoryImpl
+import de.handler.foodtruckz.library.data.data.Foodtruck
 import kotlinx.coroutines.launch
 
 abstract class FoodtruckViewModel : ViewModel() {
     abstract val uiState: LiveData<UiState>
 
     abstract fun fetchTruckz()
+    abstract fun openDetails(foodtruck: Foodtruck)
 }
 
 class FoodtruckViewModelImpl : FoodtruckViewModel() {
@@ -33,7 +35,11 @@ class FoodtruckViewModelImpl : FoodtruckViewModel() {
                 uiState.value = UiState.Error
                 return@launch
             }
+        }
+    }
 
+    override fun openDetails(foodtruck: Foodtruck) {
+        viewModelScope.launch {
 
         }
     }
