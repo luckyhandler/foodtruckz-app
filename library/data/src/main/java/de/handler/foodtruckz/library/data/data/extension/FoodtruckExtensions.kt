@@ -40,10 +40,10 @@ fun Foodtruckz.mapToModelList(): List<Foodtruck> {
                         "${toursItem.location?.city}, \n" +
                         "${toursItem.location?.street} " +
                         "${toursItem.location?.number}",
-                time = timeFormatter.format(ZonedDateTime.parse(toursItem.start)) +
+                time = "${dateFormatter.format(ZonedDateTime.parse(toursItem.start))}.\n" +
+                        timeFormatter.format(ZonedDateTime.parse(toursItem.start)) +
                         " - " +
-                        timeFormatter.format(ZonedDateTime.parse(toursItem.end)) +
-                        " (${dateFormatter.format(ZonedDateTime.parse(toursItem.start))}.)",
+                        timeFormatter.format(ZonedDateTime.parse(toursItem.end)),
                 url = operators?.get(index)?.name_url ?: "",
                 logo = operators?.get(index)?.logo,
             )

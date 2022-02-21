@@ -38,30 +38,40 @@ fun FoodtruckOverview(activity: ComponentActivity) {
 private fun FoodtruckzContent(uiState: UiState) = when (uiState) {
     is UiState.Success -> Column {
         uiState.foodtruckz.forEach { foodtruck ->
-            Row(modifier = Modifier.padding(all = 16.dp)) {
-                Image(
-                    painter = rememberImagePainter(foodtruck.logo),
-                    contentDescription = null,
-                    modifier = Modifier.size(88.dp)
+            Column(modifier = Modifier.padding(all = 16.dp)) {
+                Text(
+                    text = foodtruck.time,
+                    textAlign = TextAlign.Start,
+                    style = TextStyle.Default.copy(
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
                 )
-                Box(modifier = Modifier.size(16.dp))
-                Column {
-                    Text(
-                        text = foodtruck.name,
-                        textAlign = TextAlign.Start,
-                        style = TextStyle.Default.copy(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
+                Box(modifier = Modifier.size(8.dp))
+                Row {
+                    Image(
+                        painter = rememberImagePainter(foodtruck.logo),
+                        contentDescription = null,
+                        modifier = Modifier.size(88.dp)
+                    )
+                    Box(modifier = Modifier.size(16.dp))
+                    Column {
+                        Text(
+                            text = foodtruck.name,
+                            textAlign = TextAlign.Start,
+                            style = TextStyle.Default.copy(
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
                         )
-                    )
-                    Box(modifier = Modifier.size(8.dp))
-                    Text(
-                        text = foodtruck.location,
-                        textAlign = TextAlign.Start,
-                    )
+                        Box(modifier = Modifier.size(8.dp))
+                        Text(
+                            text = foodtruck.location,
+                            textAlign = TextAlign.Start,
+                        )
+                    }
                 }
             }
-
         }
     }
     UiState.Loading -> Box(contentAlignment = Alignment.Center) {

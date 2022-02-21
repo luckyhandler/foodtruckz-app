@@ -36,7 +36,7 @@ class FoodtrucksManagerImpl : FoodtrucksManager {
         val foodtruckz = service.fetchFoodtruckz(latitude = latitude, longitude = longitude)
         // Filter foodtrucks for specified date
         val now = ZonedDateTime.now()
-        val foodtrucksForToday = foodtruckz.filterForDate(
+        val foodtrucksForDate = foodtruckz.filterForDate(
             from = ZonedDateTime.of(
                 now.year,
                 now.monthValue,
@@ -56,6 +56,6 @@ class FoodtrucksManagerImpl : FoodtrucksManager {
                 0,
                 now.zone).plusDays(7)
         )
-        return foodtrucksForToday.mapToModelList()
+        return foodtrucksForDate.mapToModelList()
     }
 }
