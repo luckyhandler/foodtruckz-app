@@ -11,13 +11,14 @@ buildscript {
     val timber_version by extra("4.7.1")
     val junit_version by extra("4.13.2")
     val junit_androidx_version by extra("1.1.3")
+    val play_services_version by extra("19.0.1")
 
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.1.1")
+        classpath("com.android.tools.build:gradle:7.1.3")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
     }
 }

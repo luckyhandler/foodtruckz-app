@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalCoilApi::class)
+
 package de.handler.foodtruckz.feature.overview
 
 import androidx.activity.ComponentActivity
@@ -11,11 +13,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
@@ -24,10 +23,15 @@ import de.handler.foodtruckz.feature.overview.data.OverviewUiState
 import de.handler.foodtruckz.library.data.data.Foodtruck
 
 @Composable
-fun FoodtruckOverview(activity: ComponentActivity, onClick: (Foodtruck) -> Unit) {
+fun FoodtruckOverview(
+    activity: ComponentActivity,
+    onClick: (Foodtruck) -> Unit,
+    latitude: Double,
+    longitude: Double,
+) {
     val viewModel = ViewModelProvider(activity).get(FoodtruckViewModelImpl::class.java)
 
-    viewModel.fetchTruckz()
+    viewModel.fetchTruckz(latitude = latitude, longitude = longitude)
 
     viewModel.overviewUiState.observe(activity) {
         activity.setContent {
@@ -36,19 +40,18 @@ fun FoodtruckOverview(activity: ComponentActivity, onClick: (Foodtruck) -> Unit)
     }
 }
 
-@OptIn(ExperimentalCoilApi::class)
 @Composable
-private fun FoodtruckzContent(overviewUiState: OverviewUiState, onClick: (Foodtruck) -> Unit) = when (overviewUiState) {
-    is OverviewUiState.Success -> Column {
-        overviewUiState.foodtruckz.forEach { FoodtruckItem(foodtruck = it, onClick = onClick) }
+private fun FoodtruckzContent(overviewUiState: OverviewUiState, onClick: (Foodtruck) -> Unit) =
+    when (overviewUiState) {
+        is OverviewUiState.Success -> Column {
+            overviewUiState.foodtruckz.forEach { FoodtruckItem(foodtruck = it, onClick = onClick) }
+        }
+        OverviewUiState.Loading -> Box(contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+        OverviewUiState.Error -> Text(text = "error")
     }
-    OverviewUiState.Loading -> Box(contentAlignment = Alignment.Center) {
-        CircularProgressIndicator()
-    }
-    OverviewUiState.Error -> Text(text = "error")
-}
 
-@ExperimentalCoilApi
 @Composable
 fun FoodtruckItem(foodtruck: Foodtruck, onClick: (Foodtruck) -> Unit) {
     Box(modifier = Modifier.clickable { onClick(foodtruck) }) {

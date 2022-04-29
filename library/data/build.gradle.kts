@@ -26,7 +26,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
     }
 }
 
@@ -34,6 +40,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:${rootProject.extra["retrofit_version"]}")
     implementation("com.squareup.retrofit2:converter-moshi:${rootProject.extra["retrofit_version"]}")
     implementation("com.squareup.okhttp3:logging-interceptor:${rootProject.extra["okhttp_version"]}")
+
+    implementation("androidx.compose.runtime:runtime:${rootProject.extra["compose_version"]}")
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")

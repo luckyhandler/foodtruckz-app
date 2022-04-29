@@ -11,11 +11,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.time.ZonedDateTime
 
-const val longitude: String = "11.012630409289772"
-const val latitude: String = "49.46819689534032"
-
 interface FoodtrucksManager {
-    suspend fun getFoodtrucks(): List<Foodtruck>
+    suspend fun getFoodtrucks(latitude: Double, longitude: Double): List<Foodtruck>
 }
 
 class FoodtrucksManagerImpl : FoodtrucksManager {
@@ -32,8 +29,9 @@ class FoodtrucksManagerImpl : FoodtrucksManager {
         .build()
     private val service = retrofit.create(FoodtruckzService::class.java)
 
-    override suspend fun getFoodtrucks(): List<Foodtruck> {
-        val foodtruckz = service.fetchFoodtruckz(latitude = latitude, longitude = longitude)
+    override suspend fun getFoodtrucks(latitude: Double, longitude: Double): List<Foodtruck> {
+        val foodtruckz =
+            service.fetchFoodtruckz(latitude = latitude, longitude = longitude)
         // Filter foodtrucks for specified date
         val now = ZonedDateTime.now()
         val foodtrucksForDate = foodtruckz.filterForDate(
@@ -45,7 +43,8 @@ class FoodtrucksManagerImpl : FoodtrucksManager {
                 0,
                 0,
                 0,
-                now.zone),
+                now.zone
+            ),
             to = ZonedDateTime.of(
                 now.year,
                 now.monthValue,
@@ -54,7 +53,8 @@ class FoodtrucksManagerImpl : FoodtrucksManager {
                 0,
                 0,
                 0,
-                now.zone).plusDays(7)
+                now.zone
+            ).plusDays(7)
         )
         return foodtrucksForDate.mapToModelList()
     }

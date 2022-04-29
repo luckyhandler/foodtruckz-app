@@ -28,6 +28,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
+    }
     namespace = "de.handler.foodtruckz.library.core"
 }
 
@@ -39,10 +45,14 @@ dependencies {
     api("androidx.compose.material:material:${rootProject.extra["compose_version"]}")
     api("androidx.compose.ui:ui-tooling:${rootProject.extra["compose_version"]}")
     api("androidx.compose.runtime:runtime-livedata:${rootProject.extra["compose_version"]}")
+    api("androidx.compose.runtime:runtime:${rootProject.extra["compose_version"]}")
     api("androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.extra["lifecycle_runtime_ktx_version"]}")
     api("androidx.activity:activity-compose:${rootProject.extra["activity_compose_version"]}")
     api("com.google.android.material:material:${rootProject.extra["material_version"]}")
     api("com.jakewharton.timber:timber:${rootProject.extra["timber_version"]}")
+    api("com.google.android.gms:play-services-location:${rootProject.extra["play_services_version"]}")
+
+
     testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
     androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["junit_androidx_version"]}")
 }
